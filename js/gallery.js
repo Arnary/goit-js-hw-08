@@ -87,14 +87,15 @@ gallery.addEventListener("click", handlerClick);
 
 function handlerClick(event) {
   event.preventDefault();
-  if (event.currentTarget === event.target) {
+  if (event.target.nodeName !== "IMG") {
     return;
   }
 
   const bigImg = event.target.dataset.source;
+  const alt = event.target.alt;
 
   const instance = basicLightbox.create(`
-    <img src="${bigImg}" width="1280">
+    <img src="${bigImg}" width="1280" alt="${alt}">
     `)
   
   instance.show()
